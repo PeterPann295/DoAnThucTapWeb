@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Sản Phẩm</title>
 <style>
 .card-hover:hover {
 	border: 2px solid;
@@ -34,8 +34,27 @@
 		<jsp:include page="boLocSanPham.jsp"></jsp:include>
 
 		<div class="col-lg-9">
-			<h3 style="text-align: center;"> <span> ${emtyProduct} </span> </h3>
+			<h5 style="text-align: center; margin-bottom: 20px">
+				<span> ${resultFilter} </span>
+			</h5>
+			<div class="btn-toolbar mb-2 ">
+				<a href="bolocsanpham?hanhDong=giaGiam" style="margin-right: 5px">
+					<button type="button" class="btn btn-sm btn-outline-success">
+						Giá Giảm Dần</button>
+				</a> <a href="bolocsanpham?hanhDong=giaTang" style="margin-right: 5px">
+					<button type="button" class="btn btn-sm btn-outline-success">
+						Giá Tăng Dần</button>
+				</a> <a href="bolocsanpham?hanhDong=AZ" style="margin-right: 5px">
+					<button type="button" class="btn btn-sm btn-outline-success">
+						A-Z</button>
+				</a> <a href="bolocsanpham?hanhDong=ZA" style="margin-right: 5px">
+					<button type="button" class="btn btn-sm btn-outline-success">
+						Z-A</button>
+				</a>
+			</div>
 			<div class="row" style="margin-left: 30px">
+				<input type="hidden" id="numberInput" value="1">
+
 				<c:forEach var="product" items="${productList}">
 					<div class="col-lg-4 col-md-6 mb-4"
 						style="width: 216px; height: 355px">
@@ -43,8 +62,8 @@
 						<c:choose>
 							<c:when test="${product.discount != null}">
 								<div class="card card-hover">
-									<a href="chitietsanpham?productID=${product.productID}"><img class="card-img-top"
-										src="${product.imageURL}" alt=""></a>
+									<a href="chitietsanpham?productID=${product.productID}"><img
+										class="card-img-top" src="${product.imageURL}" alt=""></a>
 									<div class="card-body">
 										<h5 class="card-title">
 											<a href="#" style="text-decoration: none">
@@ -62,18 +81,20 @@
 											</span>
 										</p>
 										<span class="discount-percentage"> Giảm
-											${product.discount.percent}% </span> <button class="ms-1 btn btn-success add-to-cart-btn-one"
-										data-product-id="${product.productID}">
-										<i class="bi bi-cart3"></i> Thêm Vào Giỏ
-									</button>
+											${product.discount.percent}% </span>
+										<button class="ms-1 btn btn-success add-to-cart-btn"
+											data-product-id="${product.productID}">
+											<i class="bi bi-cart3"></i> Thêm Vào Giỏ
+										</button>
 									</div>
 
 								</div>
 
 							</c:when>
+
 							<c:otherwise>
 								<div class="card card-hover">
-									<a href="#"><img class="card-img-top"
+									<a href="chitietsanpham?productID=${product.productID}"><img class="card-img-top"
 										src="${product.imageURL}" alt=""></a>
 									<div class="card-body">
 										<h5 class="card-title">
@@ -87,10 +108,10 @@
 													currencyCode="VND" />
 											</span>
 										</p>
-										<button class="ms-1 btn btn-success add-to-cart-btn-one"
-										data-product-id="${product.productID}">
-										<i class="bi bi-cart3"></i> Thêm Vào Giỏ
-									</button>
+										<button class="ms-1 btn btn-success add-to-cart-btn"
+											data-product-id="${product.productID}">
+											<i class="bi bi-cart3"></i> Thêm Vào Giỏ
+										</button>
 									</div>
 
 								</div>
@@ -107,6 +128,6 @@
 	</div>
 
 </body>
-<script src="javascript/scriptAjax.js"></script>
+<script src="javascript/scriptAjax2.js"></script>
 
 </html>

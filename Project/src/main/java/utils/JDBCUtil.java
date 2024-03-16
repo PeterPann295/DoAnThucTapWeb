@@ -11,26 +11,45 @@ public class JDBCUtil {
 	private final static String username = "sa";
 	private final static String password = "123456";
 
-	public static Connection getConnection() {
-		Connection c = null;
+//	public static Connection getConnection() {
+//		Connection c = null;
+//
+//		try {
+//			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//			String url = "jdbc:sqlserver://localhost:1433;databaseName=project;IntegratedSecurity=true;encrypt=true;trustServerCertificate=true";
+//
+//			try {
+//				c = DriverManager.getConnection(url, username, password);
+//			} catch (SQLException e) {
+//
+//				e.printStackTrace();
+//			}
+//		} catch (Exception e) {
+//
+//		}
+//
+//		return c;
+//	}
+public static Connection getConnection() {
+	Connection c = null;
+
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		String url = "jdbc:mysql://localhost:3306/datafreshfood";
+		String username = "root";
+		String password = "";
 
 		try {
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			String url = "jdbc:sqlserver://localhost:1433;databaseName=project;IntegratedSecurity=true;encrypt=true;trustServerCertificate=true";
-
-			try {
-				c = DriverManager.getConnection(url, username, password);
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			}
-		} catch (Exception e) {
-
+			c = DriverManager.getConnection(url, username, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	}
 
-		return c;
-	} 
-
+	return c;
+}
 
 	public static void closeConnection(Connection c) {
 		if (c != null) {

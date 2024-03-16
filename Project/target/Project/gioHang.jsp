@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Giỏ hàng</title>
 <%@ include file="common.jsp"%>
 <style type="text/css">
 .size {

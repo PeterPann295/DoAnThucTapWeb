@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Trang chủ</title>
 <%@ include file="common.jsp"%>
 <style>
 .card:hover {
@@ -59,7 +59,7 @@
 								phẩm chất lượng."
 							</p>
 							<p style="margin-bottom: 80px;">
-								<a class="btn btn-lg btn-primary" href="#">Đăng nhập ngay!</a>
+								<a class="btn btn-lg btn-primary" href="dangNhap.jsp">Đăng nhập ngay!</a>
 							</p>
 						</div>
 					</div>
@@ -69,7 +69,7 @@
 					<div class="container">
 						<div class="carousel-caption">
 							<p style="margin-right: 50px; margin-bottom: 80px;">
-								<a class="btn btn-lg btn-primary" href="#">Xem Ngay</a>
+								<a class="btn btn-lg btn-primary" href="sanPham.jsp">Xem Ngay</a>
 							</p>
 						</div>
 					</div>
@@ -80,7 +80,7 @@
 						<div class="carousel-caption text-end"
 							style="margin-bottom: 80px; margin-right: 45px;">
 							<p style="margin-right: 20px">
-								<a class="btn btn-lg btn-primary" href="#">Xem Ngay</a>
+								<a class="btn btn-lg btn-primary" href="sanPham.jsp">Xem Ngay</a>
 							</p>
 						</div>
 					</div>
@@ -252,7 +252,7 @@
 	<%@ include file="footer.jsp"%>
 </body>
 
-	<script src="javascript/scriptAjax.js"></script>
+	<script src="javascript/scriptAjax2.js"></script>
 
 
 
