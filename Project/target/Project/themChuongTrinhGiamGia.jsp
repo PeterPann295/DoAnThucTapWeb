@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Chương trình giảm giá</title>
 <%@ include file="common.jsp"%>
 <link href="css/styleAdminPage.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/styleDangKi.css">

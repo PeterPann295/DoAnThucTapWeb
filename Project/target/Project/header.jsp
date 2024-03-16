@@ -31,7 +31,7 @@
 
 				<div>
 
-					<a href="#" class="logo-link"> <img
+					<a href="trangChu.jsp" class="logo-link"> <img
 						style="width: 60px; height: 50px" src="img/logo.png" alt="Logo"
 						class="logo-image">
 					</a>
@@ -45,16 +45,16 @@
 							Phẩm</a></li>
 					<li><a href="#" class="nav-link px-2 text-white">Giới
 							Thiệu</a></li>
-					<li><a href="#" class="nav-link px-2 text-white">Liên Hệ</a></li>
+					<li><a href="lienHe.jsp" class="nav-link px-2 text-white">Liên Hệ</a></li>
 				</ul>
 
 
 
-				<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-
+				<form action="bolocsanpham" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+					<input type="hidden" name="hanhDong" value="name">
 					<input type="search"
 						class="form-control form-control-dark text-bg-white"
-						placeholder="Tên thực phẩm..." aria-label="Search">
+						placeholder="Tên thực phẩm..." aria-label="Search" name="nameProduct">
 				</form>
 
 
@@ -80,9 +80,13 @@
 								</a>
 								<ul class="dropdown-menu text-small shadow">
 									<li><a class="dropdown-item" href="lichsumuahang">Lịch sử mua hàng</a></li>
-									<li><a class="dropdown-item" href="#">Settings</a></li>
-									<li><a class="dropdown-item" href="#">Profile</a></li>
+									<li><a class="dropdown-item" href="thayDoiMatKhau.jsp">Thay đổi mật khẩu</a></li>
+									<li><a class="dropdown-item" href="thayDoiThongTinKhachHang.jsp">Thay đổi thông tin</a></li>
 									<li><hr class="dropdown-divider"></li>
+									 <c:if test="${sessionScope.customer.role == true}">
+									 										<li><a class="dropdown-item" href="dashBoard.jsp">Trang quản trị</a></li>
+									 	
+									  </c:if>
 									<li><a class="dropdown-item" href="dangxuat">Đăng xuất</a></li>
 								</ul>
 

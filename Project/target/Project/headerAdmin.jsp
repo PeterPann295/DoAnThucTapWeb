@@ -15,8 +15,8 @@
     
 	<header class="navbar sticky-top bg-success flex-md-nowrap p-0 shadow"
 		data-bs-theme="dark">
-		<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white"
-			href="#">Fresh Food <img
+		<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white bg-success "
+			href="dashBoard.jsp">Fresh Food <img
 						style="width: 40px; height: 40px" src="img/logo.png" alt="Logo"
 						class="logo-image"> </a>
 		
@@ -41,7 +41,7 @@
 			</li>
 		</ul>
 		
-		<div class="text-end text-white me-5"> Xin Chao  ${sessionScope.customer.username} </div>
+		<div class="text-end text-white me-5"> Xin chào  ${sessionScope.customer.username} </div>
 		
 		<div id="navbarSearch" class="navbar-search w-100 collapse">
 			<input class="form-control w-100 rounded-0 border-0" type="text"

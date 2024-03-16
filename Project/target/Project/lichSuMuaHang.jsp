@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Lịch sử mua hàng</title>
 <%@ include file="common.jsp"%>
 <style type="text/css">
 .size {
@@ -55,21 +55,22 @@
 							<c:forEach items="${historyOrder}" var="p">
 								<tr>
 
-									<td class="text-center align-middle">${p.orderID}</td>
+									<td class="text-center align-middle"> <b> ${p.orderID} </b> </td>
 
-									<td class="text-center align-middle">${p.orderDate}</td>
+									<td class="text-center align-middle"><fmt:formatDate value="${p.orderDate}" pattern="dd/MM/yyyy" /></td>
 
-									<td><c:forEach items="${p.orderItems}" var="c">
+									<td class="text-center"><c:forEach items="${p.orderItems}" var="c">
 
 											<p>
 												<img style="width: 40px; height: 40px"
 													src="${c.getProductID().imageURL}" alt="Logo">
-												<b>${c.getProductID().nameProduct}</b> : x${c.quantity}
+												<b>${c.getProductID().nameProduct}</b> :<fmt:formatNumber value="${c.getProductID().getFinalPrice()}"
+												type="currency" currencyCode="VND" /> x${c.quantity}
 											</p>
 
 										</c:forEach></td>
 
-									<td><b><fmt:formatNumber value="${p.getTotalPrice()}"
+									<td class="text-center align-middle"><b><fmt:formatNumber value="${p.getTotalPrice()}"
 												type="currency" currencyCode="VND" /></b></td>
 								</tr>
 

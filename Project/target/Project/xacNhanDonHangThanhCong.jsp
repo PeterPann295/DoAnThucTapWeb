@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Đăng kí tài khoản</title>
+<title>Xác nhận đặt hàng</title>
 <%@ include file="common.jsp"%>
 <link rel="stylesheet" type="text/css" href="css/styleDangKi.css">
 </head>

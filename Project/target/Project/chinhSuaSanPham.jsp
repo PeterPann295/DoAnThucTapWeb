@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Chỉnh sửa sản phẩm</title>
 <%@ include file="common.jsp"%>
 <link href="css/styleAdminPage.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/styleDangKi.css">
@@ -22,7 +22,7 @@
 			<%@ include file="navMenuAdmin.jsp"%>
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 				<div class="container_form">
-					<form class="form-container" action="ThemSanPham" method="post" enctype="multipart/form-data">
+					<form class="form-container" action="chinhsuasanpham" method="post" enctype="multipart/form-data">
 						
 						<h1 class="text-center">Chỉnh sửa sản phẩm</h1>
 						<div class="mb-3">
@@ -51,7 +51,18 @@
 
 						</div>
 						<div class="mb-3">
-							<label for="category" class="form-label">Chọn Thể Loại
+							
+							<label for="availables" class="form-label">Trình Trạng:
+								</label> <select class="form-select" id="availables"
+								name="availables">
+								<option value="true">Còn Hàng</option>
+								<option value="false">Hết Hàng</option>
+								
+							</select>
+							
+						</div>
+						<div class="mb-3">
+								<label for="category" class="form-label">Chọn Thể Loại
 								Sản Phẩm</label> <select class="form-select" id="category"
 								name="category">
 								<c:forEach var="p" items="${categoryDAO.selectAll()}">

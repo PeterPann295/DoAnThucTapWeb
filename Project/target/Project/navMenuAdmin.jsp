@@ -22,28 +22,28 @@
 				<ul class="nav flex-column">
 					<li class="nav-item"><a
 						class="nav-link d-flex align-items-center gap-2 active"
-						aria-current="page" href="#"> <svg class="bi">
-										<use xlink:href="#house-fill" /></svg> Thống Kê
+						aria-current="page" href="dashBoard.jsp"> <svg class="bi">
+										<use xlink:href="#graph-up" /></svg> Thống Kê
 					</a></li>
 					<li class="nav-item"><a
-						class="nav-link d-flex align-items-center gap-2" href="#"> <svg
+						class="nav-link d-flex align-items-center gap-2" href="hoadonadmin"> <svg
 								class="bi">
 										<use xlink:href="#file-earmark" /></svg> Hóa Đơn
 					</a></li>
 					<li class="nav-item"><a
-						class="nav-link d-flex align-items-center gap-2" href="#"> <svg
+						class="nav-link d-flex align-items-center gap-2" href="sanPhamAdmin.jsp"> <svg
 								class="bi">
 										<use xlink:href="#cart" /></svg> Sản Phẩm
 					</a></li>
 					<li class="nav-item"><a
-						class="nav-link d-flex align-items-center gap-2" href="#"> <svg
+						class="nav-link d-flex align-items-center gap-2" href="khachHangAdmin.jsp"> <svg
 								class="bi">
 										<use xlink:href="#people" /></svg> Khách Hàng
 					</a></li>
 					<li class="nav-item"><a
-						class="nav-link d-flex align-items-center gap-2" href="#"> <svg
+						class="nav-link d-flex align-items-center gap-2" href="nguoiDungLaAdminAdmin.jsp"> <svg
 								class="bi">
-										<use xlink:href="#graph-up" /></svg> Báo Cáo
+										<use xlink:href="#people" /></svg> Admin
 					</a></li>
 
 				</ul>
@@ -57,24 +57,34 @@
 				</h6>
 				<ul class="nav flex-column mb-auto">
 					<li class="nav-item"><a
-						class="nav-link d-flex align-items-center gap-2" href="#"> <svg
+						class="nav-link d-flex align-items-center gap-2" href="danhMucLonAdmin.jsp"> <svg
 								class="bi">
-										<use xlink:href="#file-earmark-text" /></svg> Thêm Danh Mục Lớn
+										<use xlink:href="#file-earmark-text" /></svg> Danh Mục Lớn
 					</a></li>
 					<li class="nav-item"><a
-						class="nav-link d-flex align-items-center gap-2" href="#"> <svg
+						class="nav-link d-flex align-items-center gap-2" href="danhMucAdmin.jsp"> <svg
 								class="bi">
-										<use xlink:href="#file-earmark-text" /></svg> Thêm Danh Mục
+										<use xlink:href="#file-earmark-text" /></svg> Danh Mục
 					</a></li>
 					<li class="nav-item"><a
-						class="nav-link d-flex align-items-center gap-2" href="#"> <svg
-								class="bi">
-										<use xlink:href="#file-earmark-text" /></svg> Số Người Mua Hàng
-					</a></li>
-					<li class="nav-item"><a
-						class="nav-link d-flex align-items-center gap-2" href="#"> <svg
+						class="nav-link d-flex align-items-center gap-2" href="chuongTrinhKhuyenMaiAdmin.jsp"> <svg
 								class="bi">
 										<use xlink:href="#file-earmark-text" /></svg> Chương Trình Giảm Giá
+					</a></li>
+					<li class="nav-item"><a
+						class="nav-link d-flex align-items-center gap-2" href="top5SanPhamBanChayAdmin.jsp"> <svg
+								class="bi">
+										<use xlink:href="#file-earmark-text" /></svg> Top 5 Sản Phẩm Bán Chạy Nhất
+					</a></li>
+					<li class="nav-item"><a
+						class="nav-link d-flex align-items-center gap-2" href="top5KhachHangAdmin.jsp"> <svg
+								class="bi">
+										<use xlink:href="#file-earmark-text" /></svg> Top 5 Khách Hàng Mua Nhiều Nhất
+					</a></li>
+					<li class="nav-item"><a
+						class="nav-link d-flex align-items-center gap-2" href="lienHeAdmin.jsp"> <svg
+								class="bi">
+										<use xlink:href="#file-earmark-text" /></svg> Phản Hồi Từ Khách Hàng
 					</a></li>
 				</ul>
 
@@ -82,12 +92,12 @@
 
 				<ul class="nav flex-column mb-auto">
 					<li class="nav-item"><a
-						class="nav-link d-flex align-items-center gap-2" href="#"> <svg
+						class="nav-link d-flex align-items-center gap-2" href="trangChu.jsp"> <svg
 								class="bi">
-										<use xlink:href="#gear-wide-connected" /></svg> Cài Đặt
+										<use xlink:href="#gear-wide-connected" /></svg> Trang Mua Hàng
 					</a></li>
 					<li class="nav-item"><a
-						class="nav-link d-flex align-items-center gap-2" href="#"> <svg
+						class="nav-link d-flex align-items-center gap-2" href="dangxuat"> <svg
 								class="bi">
 										<use xlink:href="#door-closed" /></svg> Đăng Xuất
 					</a></li>
