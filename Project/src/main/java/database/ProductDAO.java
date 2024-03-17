@@ -488,6 +488,6 @@ public class ProductDAO implements InterfaceDAO<Product> {
 	public static void main(String[] args) {
 
 		ProductDAO dao = new ProductDAO();
-		System.out.println(dao.selectByName("bò").size());
+		System.out.println(dao.selectAll());
 	}
 }

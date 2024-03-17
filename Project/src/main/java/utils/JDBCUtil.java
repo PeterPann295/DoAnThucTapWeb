@@ -35,12 +35,13 @@ public static Connection getConnection() {
 
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String url = "jdbc:mysql://localhost:3306/datafreshfood";
+		String url = "jdbc:mysql://localhost:3306/project";
 		String username = "root";
-		String password = "";
+		String password = "08022003";
 
 		try {
 			c = DriverManager.getConnection(url, username, password);
+			System.out.println("succcc");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
