@@ -12,7 +12,7 @@
 </head>
 <body>
 	<%@ include file="header.jsp"%>
-	
+
 	<div class="container_form">
 		<form class="form-container" action="DangKiTaiKhoan" method="post">
 			<h1 class="text-center text-success">
@@ -24,20 +24,24 @@
 			<div class="mb-3">
 				<label for="username" class="form-label">Tên đăng nhập</label> <input
 					type="text" class="form-control" id="username" name="username"
-					placeholder="Nhập tên đăng nhập" value="${username}" required="required">
-				<div class="text-danger"> ${requestScope.err_username} </div>
+					placeholder="Nhập tên đăng nhập" value="${username}"
+					required="required">
+				<div class="text-danger">${requestScope.err_username}</div>
 			</div>
 			<div class="mb-3">
 				<label for="password" class="form-label">Mật khẩu</label>
 				<div class="input-group">
 					<input type="password" class="form-control" id="password"
 						name="password" placeholder="Nhập mật khẩu"
-						aria-describedby="button-addon2" value="${password}" required="required">
+						aria-describedby="button-addon2" value="${password}"
+						required="required">
 					<button class="btn btn-outline-secondary border border-start-0"
 						type="button" id="button-addon2" onclick="hienThiMatKhau()">
 						<img class="size" id="hienThi" alt="" src="img/hidden.png">
 					</button>
 				</div>
+				<div class="text-danger">${err_password}</div>
+
 			</div>
 			<div class="mb-3">
 				<label for="confirm-password" class="form-label">Nhập lại
@@ -52,29 +56,35 @@
 					</button>
 
 				</div>
-				<div class="text-danger"> ${err_password} </div>
 			</div>
 			<div class="mb-3">
 				<label for="full-name" class="form-label">Họ và tên</label> <input
 					type="text" class="form-control" id="full-name" name="full-name"
-					placeholder="Nhập họ và tên" value="${fullName}" required="required">
+					placeholder="Nhập họ và tên" value="${fullName}"
+					required="required">
 			</div>
 			<div class="mb-3">
 				<label for="phone" class="form-label">Số điện thoại</label> <input
 					type="tel" class="form-control" id="phone" name="phone"
-					placeholder="Nhập số điện thoại" value="${phone}" required="required">
+					placeholder="Nhập số điện thoại" value="${phone}"
+					required="required">
+				<div class="text-danger">${requestScope.err_phone}</div>
+
 			</div>
 			<div class="mb-3">
 				<label for="email" class="form-label">Email</label> <input
 					type="email" class="form-control" id="email" name="email"
 					placeholder="Nhập email" value="${email}" required="required">
+				<div class="text-danger">${requestScope.err_email}</div>
+
 			</div>
 			<div class="mb-3">
 				<label for="address" class="form-label">Địa chỉ</label>
 				<textarea class="form-control" id="address" name="address" rows="3"
 					placeholder="Nhập địa chỉ" required="required">${address}</textarea>
 			</div>
-			<button type="submit" class="btn btn-primary" style="width: 100%;">Đăng ký</button>
+			<button type="submit" class="btn btn-primary" style="width: 100%;">Đăng
+				ký</button>
 		</form>
 	</div>
 

@@ -23,6 +23,6 @@
 			<p class="text-center text-light">&copy; 2023 Fresh Food,
 				Inc</p>
 		</footer>
-	
 
+</body>
 </html>

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Chi tiết sản phẩm</title>
 <%@ include file="common.jsp"%>
 <style>
 .card:hover {
@@ -175,7 +175,7 @@
 					<c:choose>
 						<c:when test="${product.discount != null}">
 							<div class="card">
-								<a href="#"><img class="card-img-top"
+								<a href="chitietsanpham?productID=${product.productID}"><img class="card-img-top"
 									src="${product.imageURL}" alt=""></a>
 								<div class="card-body">
 									<h5 class="card-title">
@@ -206,7 +206,7 @@
 						</c:when>
 						<c:otherwise>
 							<div class="card">
-								<a href="#"><img class="card-img-top"
+								<a href="chitietsanpham?productID=${product.productID}"><img class="card-img-top"
 									src="${product.imageURL}" alt=""></a>
 								<div class="card-body">
 									<h5 class="card-title">
@@ -238,5 +238,5 @@
 
 	<%@ include file="footer.jsp"%>
 </body>
-<script src="javascript/scriptAjax.js"></script>
+<script src="javascript/scriptAjax3.js"></script>
 </html>

@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Sản phẩm</title>
 <style>
 .card-hover:hover {
 	border: 2px solid;
@@ -37,7 +37,26 @@
 		<jsp:include page="boLocSanPham.jsp"></jsp:include>
 
 		<div class="col-lg-9">
-
+				<div class="btn-toolbar mb-2 ">
+						<a href="bolocsanpham?hanhDong=giaGiam&trang=sanPham" style="margin-right: 5px">
+							<button type="button" class="btn btn-sm btn-outline-success">
+								Giá Giảm Dần</button>
+						</a>
+						<a href="bolocsanpham?hanhDong=giaTang&trang=sanPham" style="margin-right: 5px">
+							<button type="button" class="btn btn-sm btn-outline-success">
+								Giá Tăng Dần</button>
+						</a>
+						<a href="bolocsanpham?hanhDong=AZ&trang=sanPham" style="margin-right: 5px">
+							<button type="button" class="btn btn-sm btn-outline-success">
+								A-Z</button>
+						</a>
+						<a href="bolocsanpham?hanhDong=ZA&trang=sanPham" style="margin-right: 5px">
+							<button type="button" class="btn btn-sm btn-outline-success">
+								Z-A</button>
+						</a>
+					</div>
+				 <input type="hidden" id="numberInput" value="1">
+			
 			<div class="row" style="margin-left: 30px">
 				<c:forEach var="product" items="${productDAO.selectAll()}">
 					<div class="col-lg-4 col-md-6 mb-4"
@@ -65,7 +84,7 @@
 											</span>
 										</p>
 										<span class="discount-percentage"> Giảm
-											${product.discount.percent}% </span> <button class="ms-1 btn btn-success add-to-cart-btn-one"
+											${product.discount.percent}% </span> <button class="ms-1 btn btn-success add-to-cart-btn"
 										data-product-id="${product.productID}">
 										<i class="bi bi-cart3"></i> Thêm Vào Giỏ
 									</button>
@@ -90,7 +109,7 @@
 													currencyCode="VND" />
 											</span>
 										</p>
-										<button class="ms-1 btn btn-success add-to-cart-btn-one"
+										<button class="ms-1 btn btn-success add-to-cart-btn"
 											data-product-id="${product.productID}">
 											<i class="bi bi-cart3"></i> Thêm Vào Giỏ
 										</button>
@@ -110,6 +129,6 @@
 	</div>
 
 </body>
-<script src="javascript/scriptAjax.js"></script>
+<script src="javascript/scriptAjax2.js"></script>
 
 </html>
