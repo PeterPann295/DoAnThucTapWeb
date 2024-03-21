@@ -179,8 +179,9 @@ public class ProductDAO implements InterfaceDAO<Product> {
 		ArrayList<Product> products = new ArrayList<Product>();
 		try {
 			Connection con = JDBCUtil.getConnection();
-			String sql = "Select Top 10 * \r\n" + "from Products\r\n"
-					+ "where discountID in (select discountID from Discounts)";
+			String sql = "SELECT * FROM Products " +
+					"WHERE discountID IN (SELECT discountID FROM Discounts) " +
+					"LIMIT 10";
 			PreparedStatement pst = con.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			CategoryDAO cado = new CategoryDAO();
@@ -253,11 +254,12 @@ public class ProductDAO implements InterfaceDAO<Product> {
 		return products;
 	}
 
+	// Chọn 10 sản phẩm mới nhất
 	public ArrayList<Product> selectAllProductNew() {
 		ArrayList<Product> products = new ArrayList<Product>();
 		try {
 			Connection con = JDBCUtil.getConnection();
-			String sql = "Select Top 10 * \r\n" + "from Products\r\n" + "Order By productID desc";
+			String sql = "SELECT * FROM Products ORDER BY productID DESC LIMIT 10";
 			PreparedStatement pst = con.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
 			CategoryDAO cado = new CategoryDAO();
@@ -333,7 +335,7 @@ public class ProductDAO implements InterfaceDAO<Product> {
 		ArrayList<Product> products = new ArrayList<Product>();
 		try {
 			Connection con = JDBCUtil.getConnection();
-			String sql = "Select Top 5 * from Products where categoryID=? and productID != ?";
+			String sql = "SELECT * FROM Products WHERE categoryID=? AND productID != ? LIMIT 5";
 			PreparedStatement pst = con.prepareStatement(sql);
 			pst.setString(1, product.getCategoryID().getCategoryID());
 			pst.setString(2, product.getProductID());
@@ -416,15 +418,14 @@ public class ProductDAO implements InterfaceDAO<Product> {
 		ArrayList<Product> products = new ArrayList<Product>();
 		try {
 			Connection con = JDBCUtil.getConnection();
-			String sql = "SELECT TOP 5\r\n" + "    P.productID,\r\n" + "    P.nameProduct,\r\n"
-					+ "    P.description,\r\n" + "    P.price,\r\n" + "	p.imageURL,\r\n" + "	p.categoryID,\r\n"
-					+ "	p.discountID,\r\n" + "    P.unit,\r\n" + "	p.available,\r\n"
-					+ "    SUM(OI.quantity) AS totalQuantitySold\r\n" + "FROM\r\n" + "    Products P\r\n" + "JOIN\r\n"
-					+ "    OrderItems OI ON P.productID = OI.productID\r\n" + "JOIN\r\n"
-					+ "    Orders O ON OI.orderID = O.orderID\r\n" + "GROUP BY\r\n" + "    P.productID,\r\n"
-					+ "    P.nameProduct,\r\n" + "    P.description,\r\n" + "    P.price,\r\n" + "	p.imageURL,\r\n"
-					+ "	p.categoryID,\r\n" + "	p.discountID,\r\n" + "    P.unit,\r\n" + "	p.available\r\n"
-					+ "ORDER BY\r\n" + "    totalQuantitySold DESC;";
+			String sql = "SELECT P.productID, P.nameProduct, P.description, P.price, P.imageURL, " +
+					"P.categoryID, P.discountID, P.unit, P.available, SUM(OI.quantity) AS totalQuantitySold " +
+					"FROM Products P " +
+					"JOIN OrderItems OI ON P.productID = OI.productID " +
+					"JOIN Orders O ON OI.orderID = O.orderID " +
+					"GROUP BY P.productID, P.nameProduct, P.description, P.price, P.imageURL, " +
+					"P.categoryID, P.discountID, P.unit, P.available " +
+					"ORDER BY totalQuantitySold DESC LIMIT 5";
 			PreparedStatement pst = con.prepareStatement(sql);
 
 			ResultSet rs = pst.executeQuery();

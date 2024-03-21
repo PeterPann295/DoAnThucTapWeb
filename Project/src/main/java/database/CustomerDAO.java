@@ -194,61 +194,51 @@ public class CustomerDAO implements InterfaceDAO<Customer> {
 		}
 		return null;
 	}
+	// Lấy danh sách 5 khách hàng có doanh thu cao nhất
 	public ArrayList<Customer> top5KhachHang() {
+		ArrayList<Customer> result = new ArrayList<Customer>();
+		Connection conn = JDBCUtil.getConnection();
+
+		// Sử dụng 'LIMIT 5' thay vì 'SELECT TOP 5' và bỏ ';' phía cuối truy vấn SQL
+		String sql = "SELECT customerID, username, password, nameCustomer, numberPhone, "
+				+ "email, address, role, SUM(P.price * OI.quantity * (1 - IFNULL(D.discountPercentage, 0) / 100)) AS totalAmount "
+				+ "FROM Customers C "
+				+ "INNER JOIN Orders O ON C.customerID = O.customerID "
+				+ "INNER JOIN OrderItems OI ON O.orderID = OI.orderID "
+				+ "INNER JOIN Products P ON OI.productID = P.productID "
+				+ "LEFT JOIN Discounts D ON P.discountID = D.discountID "
+				+ "GROUP BY C.customerID, C.username, C.password, C.nameCustomer, "
+				+ "C.numberPhone, C.email, C.address, C.role "
+				+ "ORDER BY totalAmount DESC LIMIT 5";
+
+		PreparedStatement pst;
 		try {
-			ArrayList<Customer> result = new ArrayList<Customer>();
-			Connection conn = JDBCUtil.getConnection();
-			String sql = "WITH CalculatedOrderAmount AS (\r\n"
-					+ "    SELECT\r\n"
-					+ "        C.customerID,\r\n"
-					+ "		C.username,\r\n"
-					+ "		C.password,\r\n"
-					+ "        C.nameCustomer,\r\n"
-					+ "		C.numberPhone,\r\n"
-					+ "		C.email,\r\n"
-					+ "		C.address,\r\n"
-					+ "		c.role,\r\n"
-					+ "        SUM(P.price * OI.quantity * (1 - ISNULL(D.discountPercentage, 0) / 100)) AS totalAmount\r\n"
-					+ "    FROM\r\n"
-					+ "        Customers C\r\n"
-					+ "        INNER JOIN Orders O ON C.customerID = O.customerID\r\n"
-					+ "        INNER JOIN OrderItems OI ON O.orderID = OI.orderID\r\n"
-					+ "        INNER JOIN Products P ON OI.productID = P.productID\r\n"
-					+ "        LEFT JOIN Discounts D ON P.discountID = D.discountID\r\n"
-					+ "    GROUP BY\r\n"
-					+ "        C.customerID, C.username,\r\n"
-					+ "		C.password,\r\n"
-					+ "        C.nameCustomer,\r\n"
-					+ "		C.numberPhone,\r\n"
-					+ "		C.email,\r\n"
-					+ "		C.address,\r\n"
-					+ "		c.role\r\n"
-					+ ")\r\n"
-					+ "SELECT TOP 5\r\n"
-					+ "     customerID,\r\n"
-					+ "		username,\r\n"
-					+ "		password,\r\n"
-					+ "       nameCustomer,\r\n"
-					+ "	numberPhone,\r\n"
-					+ "		email,\r\n"
-					+ "		address,\r\n"
-					+ "		role,\r\n"
-					+ "    totalAmount\r\n"
-					+ "FROM\r\n"
-					+ "    CalculatedOrderAmount\r\n"
-					+ "ORDER BY\r\n"
-					+ "    totalAmount DESC;\r\n"
-					+ "";
-			PreparedStatement pst = conn.prepareStatement(sql);
+			pst = conn.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
-			while(rs.next()) {
-				result.add(new Customer(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5) , rs.getString(6), rs.getString(7), rs.getBoolean(8)));
+
+			while (rs.next()) {
+				result.add(new Customer(
+						rs.getInt("customerID"),
+						rs.getString("username"),
+						rs.getString("password"),
+						rs.getString("nameCustomer"),
+						rs.getString("numberPhone"),
+						rs.getString("email"),
+						rs.getString("address"),
+						rs.getBoolean("role")));
 			}
-			return result;
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
 		}
-		return null;
+		return result;
 	}
 	public boolean updateRole(boolean role, String id) {
 	    try {
@@ -312,10 +302,8 @@ public class CustomerDAO implements InterfaceDAO<Customer> {
 		}
 	
 	public static void main(String[] args) {
-		CustomerDAO cus = new CustomerDAO();
-//		Customer c = cus.checkLogin("chuotcon", "chuotcon");
-//		System.out.println(c);
-		System.out.println(cus.top5KhachHang().size());
+		CustomerDAO dao = new CustomerDAO();
+		System.out.println(dao.checkUsernamePassword("admin"));
 	}
 
 }

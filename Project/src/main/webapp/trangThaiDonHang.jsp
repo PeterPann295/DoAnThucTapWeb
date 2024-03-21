@@ -35,12 +35,14 @@
         });
     });
 
-    function cancelOrder(orderId) {
+    function cancelOrder(orderId, statusIdToCancel) {
+        // Note: statusIdToCancel needs to be provided to this function.
         $.ajax({
-            url: 'cancelOrderServlet',
+            url: 'TrangThaiDonHang',
             type: 'POST',
             data: {
-                orderId: orderId
+                orderID: orderId,
+                statusID: statusIdToCancel // Key đã được cập nhật từ "status"
             },
             success: function(data) {
                 // Cập nhật trạng thái của đơn hàng trên trang
@@ -73,7 +75,7 @@
                                 <th class="text-center">Trạng Thái</th>
                                 <th class="text-center">Hành Động</th>
                             </tr>
-                            <c:forEach items="${historyOrder}" var="p">
+                            <c:forEach items="${orders}" var="p">
                                 <tr>
                                     <td class="text-center align-middle"> <b> ${p.orderID} </b> </td>
                                     <td class="text-center align-middle"><fmt:formatDate value="${p.orderDate}" pattern="dd/MM/yyyy" /></td>
@@ -87,10 +89,22 @@
                                         </c:forEach></td>
                                     <td class="text-center align-middle"><b><fmt:formatNumber value="${p.getTotalPrice()}"
                                                 type="currency" currencyCode="VND" /></b></td>
-                                    <td id="order-status-${p.orderID}" class="text-center align-middle">${p.orderStatus}</td>
+                                    // Hiển thị trạng thái của đơn hàng
+                                    <td class="text-center align-middle" id="order-status-${p.orderID}">
+                                        <c:forEach items="${statusList}" var="status">
+                                            <c:if test="${status.statusID == p.getStatusID()}">
+                                                ${status.statusName}
+                                            </c:if>
+                                        </c:forEach>
+                                    </td>
+                                    // Hiển thị nút hủy đơn hàng cho user nếu user muốn hủy đơn hàng
                                     <td class="text-center align-middle">
                                         <c:if test="${p.orderStatus != 'Thành công'}">
-                                            <button class="btn btn-danger cancel-order-btn" data-order-id="${p.orderID}">Hủy đơn hàng</button>
+                                            <button class="btn btn-danger cancel-order-btn"
+                                                    data-order-id="${p.orderID}"
+                                                    data-cancel-status-id="<c:out value='${cancelledStatusID}'/>"
+                                                    onclick="cancelOrder('${p.orderID}', '${cancelledStatusID}')">Hủy đơn hàng
+                                            </button>
                                         </c:if>
                                     </td>
                                 </tr>

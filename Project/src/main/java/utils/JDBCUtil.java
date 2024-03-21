@@ -41,7 +41,6 @@ public static Connection getConnection() {
 
 		try {
 			c = DriverManager.getConnection(url, username, password);
-			System.out.println("succcc");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

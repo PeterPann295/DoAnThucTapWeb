@@ -47,7 +47,7 @@
 						<div class="mb-3">
 							<label for="imgProduct" class="form-label">Hình Ảnh Sản Phẩm</label> <input
 								type="file" class="form-control" id="imgProduct" name="imgProduct"
-								placeholder="Nhập mã sản phẩm" value="${productUpdate.imageURL}"">
+								placeholder="Nhập mã sản phẩm" value="${productUpdate.imageURL}">
 
 						</div>
 						<div class="mb-3">

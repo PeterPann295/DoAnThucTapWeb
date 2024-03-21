@@ -108,4 +108,8 @@ public class ContactDAO implements InterfaceDAO<Contact>{
 		return null;
 	}
 
+	public static void main(String[] args) {
+		System.out.println(new ContactDAO().selectAll());
+	}
+
 }

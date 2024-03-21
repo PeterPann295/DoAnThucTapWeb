@@ -10,10 +10,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2dlEGCm7vqXxfNq1LVjfaaLBTFM" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -24,7 +25,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/FutureOFMe/DoAnThucTapWeb",
+    "last_opened_file_path": "C:/IntelliJ/DoAnThucTap/Project",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -38,6 +39,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710574166972</updated>
       <workItem from="1710574167942" duration="90000" />
+      <workItem from="1710858581446" duration="26000" />
     </task>
     <servers />
   </component>

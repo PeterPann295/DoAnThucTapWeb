@@ -93,4 +93,8 @@ public class OrderItemDAO implements InterfaceDAO<OrderItem> {
 		return orderItems;
 	}
 
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+	}
+
 }

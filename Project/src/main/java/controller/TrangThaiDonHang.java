@@ -1,43 +1,65 @@
 package controller;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
+import model.Status;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import database.OrderDAO;
-import model.Order;
+import database.StatusDAO;
 
-@WebServlet("/orderStatusServlet")
 public class TrangThaiDonHang extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Lấy danh sách đơn hàng từ cơ sở dữ liệu
-    	HttpSession session = request.getSession();
-        List<Order> orders = new ArrayList<>();
-        OrderDAO orderDAO = new OrderDAO(); 
-        orders = orderDAO.selectAll(); 
+        HttpSession session = request.getSession();
 
-        // Cập nhật trạng thái của các đơn hàng
-        for (Order order : orders) {
-            order.updateOrderStatus(); // Cập nhật trạng thái của đơn hàng
+        if (session.getAttribute("user") == null) {
+            response.sendRedirect("dangNhap.jsp");
+            return;
+        }
+        // Lấy danh sách trạng thái đơn hàng
+        StatusDAO statusDAO = new StatusDAO();
+        List<Status> statusList = statusDAO.getAllStatus();
+        // Đưa danh sách trạng thái đơn hàng vào request
+        request.setAttribute("statusList", statusList);
+
+        // Xử lý cập nhật trạng thái đơn hàng
+        String orderID = request.getParameter("orderID");
+        String statusID = request.getParameter("statusID");
+        // Nếu orderID và statusID không rỗng thì cập nhật trạng thái đơn hàng
+        if (orderID != null && statusID != null) {
+            statusDAO.updateStatus(orderID, statusID);
         }
 
-        // Chuyển danh sách đơn hàng đã được cập nhật vào request để hiển thị trên trang JSP
-        request.setAttribute("historyOrder", orders);
-        request.getRequestDispatcher("/trangThaiDonHang.jsp").forward(request, response);
+        request.getRequestDispatcher("trangThaiDonHang.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Xử lý hủy đơn hàng
+        String orderID = request.getParameter("orderID");
+        // Nếu orderID không rỗng thì tìm trạng thái "Đã hủy"
+        if (orderID != null) {
+            StatusDAO statusDAO = new StatusDAO();
+            List<Status> statusList = statusDAO.getAllStatus();
+            String cancelledStatusID = null;
+            // Tìm trạng thái "Đã hủy"
+            for (Status status : statusList) {
+                if ("Đã hủy".equals(status.getStatusName())) {
+                    cancelledStatusID = status.getStatusID();
+                    break;
+                }
+            }
+            // Nếu tìm thấy trạng thái "Đã hủy" thì cập nhật trạng thái đơn hàng
+            if (cancelledStatusID != null) {
+                statusDAO.updateStatus(orderID, cancelledStatusID);
+            }
+        }
         doGet(request, response);
     }
 }

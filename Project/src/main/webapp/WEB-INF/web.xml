@@ -128,6 +128,10 @@
 		<filter-name>SecurityFilterCustomer</filter-name>
 		<url-pattern>/xacNhanDatHang.jsp</url-pattern>
 	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SecurityFilterCustomer</filter-name>
+		<url-pattern>/trangThaiDonHang.jsp</url-pattern>
+	</filter-mapping>
 
 	<!-- Ket Thuc Khai Bao Filter -->
 
@@ -181,12 +185,7 @@
 		<description></description>
 		<servlet-class>controller.ThemGiamGiaSP</servlet-class>
 	</servlet>
-	<servlet>
-		<servlet-name>CapNhatGiamGia</servlet-name>
-		<display-name>CapNhatGiamGia</display-name>
-		<description></description>
-		<servlet-class>controller.CapNhatGiamGia</servlet-class>
-	</servlet>
+
 	<servlet>
 		<servlet-name>ChinhSuaSanPham</servlet-name>
 		<display-name>ChinhSuaSanPham</display-name>
@@ -295,12 +294,7 @@
 		<description></description>
 		<servlet-class>controller.ChinhSuaRole</servlet-class>
 	</servlet>
-	<servlet>
-		<servlet-name>ChinhSuaCTKhuyenMai</servlet-name>
-		<display-name>ChinhSuaCTKhuyenMai</display-name>
-		<description></description>
-		<servlet-class>controller.ChinhSuaCTKhuyenMai</servlet-class>
-	</servlet>
+
 	<servlet>
 		<servlet-name>XoaSanPhamAdmin</servlet-name>
 		<display-name>XoaSanPhamAdmin</display-name>
@@ -318,6 +312,12 @@
 		<display-name>KiemTraSessionKhachHang</display-name>
 		<description></description>
 		<servlet-class>controller.KiemTraSessionKhachHang</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TrangThaiDonHang</servlet-name>
+		<display-name>TrangThaiDonHang</display-name>
+		<description></description>
+		<servlet-class>controller.TrangThaiDonHang</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DangKiTaiKhoan</servlet-name>
@@ -351,10 +351,7 @@
 		<servlet-name>ThemGiamGiaSP</servlet-name>
 		<url-pattern>/themgiamgiasp</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>CapNhatGiamGia</servlet-name>
-		<url-pattern>/capnhatgiamgia</url-pattern>
-	</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>ChinhSuaSanPham</servlet-name>
 		<url-pattern>/chinhsuasanpham</url-pattern>
@@ -427,10 +424,7 @@
 		<servlet-name>ChinhSuaRole</servlet-name>
 		<url-pattern>/chinhsuarole</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>ChinhSuaCTKhuyenMai</servlet-name>
-		<url-pattern>/chinhsuakhuyenmai</url-pattern>
-	</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>XoaSanPhamAdmin</servlet-name>
 		<url-pattern>/xoasanpham</url-pattern>
@@ -442,6 +436,10 @@
 	<servlet-mapping>
 		<servlet-name>KiemTraSessionKhachHang</servlet-name>
 		<url-pattern>/kiemtraSessionKhachHang</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TrangThaiDonHang</servlet-name>
+		<url-pattern>/trangThaiDonHang</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>trangChu.jsp</welcome-file>

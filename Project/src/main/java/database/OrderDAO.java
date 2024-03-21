@@ -245,12 +245,35 @@ public class OrderDAO implements InterfaceDAO<Order> {
 			}
 		 return result;
 	 }
+
+	public Map<String, Integer> orderStatus() {
+		Map<String, Integer> result = new HashMap<>();
+
+		try {
+			Connection con = JDBCUtil.getConnection();
+			// Cập nhật truy vấn để join với bảng Status và sử dụng statusID
+			String sql = "SELECT s.statusName, COUNT(*) FROM Orders o JOIN Status s ON o.statusID = s.statusID GROUP BY s.statusName;";
+			PreparedStatement pst = con.prepareStatement(sql);
+			ResultSet rs = pst.executeQuery();
+
+			while (rs.next()) {
+				String statusName = rs.getString("statusName"); // Giả sử cột trong bảng Status là statusName
+				int count = rs.getInt(2);
+				result.put(statusName, count);
+			}
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
 	 
 	public static void main(String[] args) {
 		OrderDAO dao = new OrderDAO();
-//		Map<String, Double> maps = dao.revenueLast7Days();
-//		System.out.println(maps.size());
-		System.out.println(dao.selectAll());
+		// in ra trạng thái orderStatus
+		System.out.println(dao.orderStatus());
 
 	}
 }
