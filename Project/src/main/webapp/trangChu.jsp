@@ -112,21 +112,21 @@
 		<hr class="border border-success border-1 opacity-75">
 
 		<div class="row" style="margin-left: 10px">
-			<c:forEach var="p" items="${parentCategoryDAO.selectAll()}">
-				<div class="col-lg-4 col-md-6 mb-4 border-success"
-					style="width: 160px; height: 150px">
-					<div class="card h-110">
-						<a
-							href="bolocsanpham?parentCategoryID=${p.parentCategoryID}&hanhDong=parent-category"
-							style="text-decoration: none" class="text-success"><img
-							class="card-img-top" src="${p.imageURL}" alt="">
-							<div class="card-body">
-								<h6 class="text-center">${p.name}</h6>
-								<p class="card-text">${product.desriptionString}</p>
-							</div> </a>
-					</div>
-				</div>
-			</c:forEach>
+<%--			<c:forEach var="p" items="${parentCategoryDAO.selectAll()}">--%>
+<%--				<div class="col-lg-4 col-md-6 mb-4 border-success"--%>
+<%--					style="width: 160px; height: 150px">--%>
+<%--					<div class="card h-110">--%>
+<%--						<a--%>
+<%--							href="bolocsanpham?parentCategoryID=${p.parentCategoryID}&hanhDong=parent-category"--%>
+<%--							style="text-decoration: none" class="text-success"><img--%>
+<%--							class="card-img-top" src="${p.imageURL}" alt="">--%>
+<%--							<div class="card-body">--%>
+<%--								<h6 class="text-center">${p.name}</h6>--%>
+<%--								<p class="card-text">${product.desriptionString}</p>--%>
+<%--							</div> </a>--%>
+<%--					</div>--%>
+<%--				</div>--%>
+<%--			</c:forEach>--%>
 		</div>
 	</div>
 
@@ -136,42 +136,42 @@
 		<hr class="border border-success border-1 opacity-75">
 
 		<div class="row" style="margin-left: 30px">
-			<c:forEach var="product"
-				items="${productDAO.selectTop10HasDiscount()}">
-				<div class="col-lg-4 col-md-6 mb-4"
-					style="width: 216px; height: 355px">
+<%--			<c:forEach var="product"--%>
+<%--				items="${productDAO.selectTop10HasDiscount()}">--%>
+<%--				<div class="col-lg-4 col-md-6 mb-4"--%>
+<%--					style="width: 216px; height: 355px">--%>
 
-					<div class="card">
-						<a href="chitietsanpham?productID=${product.productID}"><img
-							class="card-img-top" src="${product.imageURL}" alt=""></a>
-						<div class="card-body">
-							<h5 class="card-title">
-								<a href="#" style="text-decoration: none">
-									${product.nameProduct} </a>
-							</h5>
-							<p class="mt-1">ĐVT: ${product.unit}</p>
-							<p>
-								<span class="text-success"> <fmt:formatNumber
-										value="${product.getFinalPrice()}" type="currency"
-										currencyCode="VND" />
-								</span> <span style="text-decoration: line-through; padding-left: 5px">
-									<fmt:formatNumber value="${product.price}" type="currency"
-										currencyCode="VND" />
-								</span>
-							</p>
-							<span class="discount-percentage"> Giảm
-								${product.discount.percent}% </span>
-							<button class="ms-1 btn btn-success add-to-cart-btn"
-								data-product-id="${product.productID}">
-								<i class="bi bi-cart3"></i> Thêm Vào Giỏ
-							</button>
+<%--					<div class="card">--%>
+<%--						<a href="chitietsanpham?productID=${product.productID}"><img--%>
+<%--							class="card-img-top" src="${product.imageURL}" alt=""></a>--%>
+<%--						<div class="card-body">--%>
+<%--							<h5 class="card-title">--%>
+<%--								<a href="#" style="text-decoration: none">--%>
+<%--									${product.nameProduct} </a>--%>
+<%--							</h5>--%>
+<%--							<p class="mt-1">ĐVT: ${product.unit}</p>--%>
+<%--							<p>--%>
+<%--								<span class="text-success"> <fmt:formatNumber--%>
+<%--										value="${product.getFinalPrice()}" type="currency"--%>
+<%--										currencyCode="VND" />--%>
+<%--								</span> <span style="text-decoration: line-through; padding-left: 5px">--%>
+<%--									<fmt:formatNumber value="${product.price}" type="currency"--%>
+<%--										currencyCode="VND" />--%>
+<%--								</span>--%>
+<%--							</p>--%>
+<%--							<span class="discount-percentage"> Giảm--%>
+<%--								${product.discount.percent}% </span>--%>
+<%--							<button class="ms-1 btn btn-success add-to-cart-btn"--%>
+<%--								data-product-id="${product.productID}">--%>
+<%--								<i class="bi bi-cart3"></i> Thêm Vào Giỏ--%>
+<%--							</button>--%>
 
-						</div>
+<%--						</div>--%>
 
-					</div>
+<%--					</div>--%>
 
-				</div>
-			</c:forEach>
+<%--				</div>--%>
+<%--			</c:forEach>--%>
 		</div>
 	</div>
 
@@ -183,77 +183,76 @@
 		<hr class="border border-success border-1 opacity-75">
 
 		<div class="row" style="margin-left: 30px">
-			<c:forEach var="product" items="${productDAO.selectAllProductNew()}">
-				<div class="col-lg-4 col-md-6 mb-4"
-					style="width: 216px; height: 355px">
+<%--			<c:forEach var="product" items="${productDAO.selectAllProductNew()}">--%>
+<%--				<div class="col-lg-4 col-md-6 mb-4"--%>
+<%--					style="width: 216px; height: 355px">--%>
 
-					<c:choose>
-						<c:when test="${product.discount != null}">
-							<div class="card">
-								<a href="chitietsanpham?productID=${product.productID}"><img
-									class="card-img-top" src="${product.imageURL}" alt=""></a>
-								<div class="card-body">
-									<h5 class="card-title">
-										<a href="#" style="text-decoration: none">
-											${product.nameProduct} </a>
-									</h5>
-									<p class="mt-1">ĐVT: ${product.unit}</p>
-									<p>
-										<span class="text-success"> <fmt:formatNumber
-												value="${product.getFinalPrice()}" type="currency"
-												currencyCode="VND" />
-										</span> <span
-											style="text-decoration: line-through; padding-left: 5px">
-											<fmt:formatNumber value="${product.price}" type="currency"
-												currencyCode="VND" />
-										</span>
-									</p>
-									<span class="discount-percentage"> Giảm
-										${product.discount.percent}% </span>
-									<button class="ms-1 btn btn-success add-to-cart-btn"
-										data-product-id="${product.productID}">
-										<i class="bi bi-cart3"></i> Thêm Vào Giỏ
-									</button>
-								</div>
+<%--					<c:choose>--%>
+<%--						<c:when test="${product.discount != null}">--%>
+<%--							<div class="card">--%>
+<%--								<a href="chitietsanpham?productID=${product.productID}"><img--%>
+<%--									class="card-img-top" src="${product.imageURL}" alt=""></a>--%>
+<%--								<div class="card-body">--%>
+<%--									<h5 class="card-title">--%>
+<%--										<a href="#" style="text-decoration: none">--%>
+<%--											${product.nameProduct} </a>--%>
+<%--									</h5>--%>
+<%--									<p class="mt-1">ĐVT: ${product.unit}</p>--%>
+<%--									<p>--%>
+<%--										<span class="text-success"> <fmt:formatNumber--%>
+<%--												value="${product.getFinalPrice()}" type="currency"--%>
+<%--												currencyCode="VND" />--%>
+<%--										</span> <span--%>
+<%--											style="text-decoration: line-through; padding-left: 5px">--%>
+<%--											<fmt:formatNumber value="${product.price}" type="currency"--%>
+<%--												currencyCode="VND" />--%>
+<%--										</span>--%>
+<%--									</p>--%>
+<%--									<span class="discount-percentage"> Giảm--%>
+<%--										${product.discount.percent}% </span>--%>
+<%--									<button class="ms-1 btn btn-success add-to-cart-btn"--%>
+<%--										data-product-id="${product.productID}">--%>
+<%--										<i class="bi bi-cart3"></i> Thêm Vào Giỏ--%>
+<%--									</button>--%>
+<%--								</div>--%>
 
-							</div>
+<%--							</div>--%>
 
-						</c:when>
-						<c:otherwise>
-							<div class="card">
-								<a href="chitietsanpham?productID=${product.productID}"><img
-									class="card-img-top" src="${product.imageURL}" alt=""></a>
-								<div class="card-body">
-									<h5 class="card-title">
-										<a href="#" style="text-decoration: none">
-											${product.nameProduct} </a>
-									</h5>
-									<p class="mt-1">ĐVT: ${product.unit}</p>
-									<p>
-										<span class="text-success"> <fmt:formatNumber
-												value="${product.getFinalPrice()}" type="currency"
-												currencyCode="VND" />
-										</span>
-									</p>
-									<button class="ms-1 btn btn-success add-to-cart-btn"
-										data-product-id="${product.productID}">
-										<i class="bi bi-cart3"></i> Thêm Vào Giỏ
-									</button>
-								</div>
+<%--						</c:when>--%>
+<%--						<c:otherwise>--%>
+<%--							<div class="card">--%>
+<%--								<a href="chitietsanpham?productID=${product.productID}"><img--%>
+<%--									class="card-img-top" src="${product.imageURL}" alt=""></a>--%>
+<%--								<div class="card-body">--%>
+<%--									<h5 class="card-title">--%>
+<%--										<a href="#" style="text-decoration: none">--%>
+<%--											${product.nameProduct} </a>--%>
+<%--									</h5>--%>
+<%--									<p class="mt-1">ĐVT: ${product.unit}</p>--%>
+<%--									<p>--%>
+<%--										<span class="text-success"> <fmt:formatNumber--%>
+<%--												value="${product.getFinalPrice()}" type="currency"--%>
+<%--												currencyCode="VND" />--%>
+<%--										</span>--%>
+<%--									</p>--%>
+<%--									<button class="ms-1 btn btn-success add-to-cart-btn"--%>
+<%--										data-product-id="${product.productID}">--%>
+<%--										<i class="bi bi-cart3"></i> Thêm Vào Giỏ--%>
+<%--									</button>--%>
+<%--								</div>--%>
 
-							</div>
-						</c:otherwise>
-					</c:choose>
+<%--							</div>--%>
+<%--						</c:otherwise>--%>
+<%--					</c:choose>--%>
 
-				</div>
-			</c:forEach>
+<%--				</div>--%>
+<%--			</c:forEach>--%>
 		</div>
 	</div>
 	<%@ include file="footer.jsp"%>
 </body>
 
 	<script src="javascript/scriptAjax2.js"></script>
-
 
 
 </html>
