@@ -38,7 +38,7 @@
         FB.init({
             appId      : '729819742532088',
             cookie     : true,                     // Enable cookies to allow the server to access the session.
-            xfbml      : true,                     // Parse social plugins on this webpage.
+            xfbml      : true,    Log                 // Parse social plugins on this webpage.
             version    : 'v5.0'           // Use this Graph API version for this call.
         });
 

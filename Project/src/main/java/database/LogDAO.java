@@ -1,5 +1,7 @@
 package database;
 
+import model.Log;
+
 import java.util.ArrayList;
 
 public class LogDAO implements InterfaceDAO<Log>{
